@@ -1,15 +1,40 @@
 ﻿//site javascript
+(function () {
 
-var ele = document.getElementById("username");
-ele.innerHTML = "Tomasz Dubielek";
+    //var ele = $("#username");
+    //ele.text("Tomasz Ciabalaba888");
+    //
+    ////mouse hover change background color
+    // $("#main").on({
+    //    mouseenter: function () {
+    //        this.style = "background-color: #888"
+    //    },
+    //    mouseleave: function () {
+    //        this.style = ""
+    //    },
+    // });
+    //
+    // $("ul.menu li a").on({
+    //     click: function () {
+    //         alert("Hello")
+    //     }
+    // });
 
-var main = document.getElementById("main");
-main.onmouseenter = function ()
-{
-    main.style.backgroundColor = "#888";
-}
+    var $sidebadAndWrapper = $("#sidebar, #wrapper");
 
-main.onmouseleave = function ()
-{
-    main.style.backgroundColor = "";
-}
+    $("#sidebarToggle").on({
+        click: function () {
+            $sidebadAndWrapper.toggleClass("hide-sidebar")
+            if ($sidebadAndWrapper.hasClass("hide-sidebar"))
+            {
+                $(this).text("Show Sidebar")
+            }
+            else
+            {
+                $(this).text("Hide Sidebar")
+            }
+        }
+    });
+    
+
+})();
