@@ -2,59 +2,19 @@
     ViewBag.Title = "Home Page";
 }
 
-<!DOCTYPE html>
-<html>
+<h1>Squash Leaque</h1>
+<p>This is my awesome app</p>
 
-<head>
-    <meta charset="utf-8" />
-    <title>Squash League - @ViewBag.Title</title>
-
-    <link rel="stylesheet" href="css/site.css" />
-
-</head>
-
-<body>
-
-    <div id="sidebar">
-        <img src="img/squashball.png" alt="headshot" class="headshot" />
-        <span id="username">Tomasz Tomaszewski</span>
-        <ul class="menu">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
+<form>
+    <div>
+        <label>Date</label>
+        <input />
     </div>
-
-    <div id="wrapper">
-        <div id="main">
-            <div>
-                <button id="sidebarToggle">Toggle Menu</button>
-            </div>
-            <h1>Framework .Net Core</h1>
-            <p>This is my app</p>
-            <form>
-                <div>
-                    <label>Date</label>
-                    <input />
-                </div>
-                <div>
-                    <label>Location</label>
-                    <input />
-                </div>
-                <div>
-                    <input type="submit" value="Add" />
-                </div>
-            </form>
-        </div>
+    <div>
+        <label>Location</label>
+        <input />
     </div>
-
-    <div id="footer">
-        &copy; 2016 ActiveBuddy Ltd.
+    <div>
+        <input type="submit" value="Add" />
     </div>
-
-    <script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="js/site.js"></script>
-
-</body>
-
-</html>
+</form>

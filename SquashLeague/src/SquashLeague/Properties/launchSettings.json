@@ -12,6 +12,8 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
+        "Key": "Value",
+        "MailSettings__ToAddress": "bgates@bgats.org",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
