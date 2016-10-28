@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using SquashLeague.Models;
 using SquashLeague.Services;
 using SquashLeague.ViewModel;
 using System;
@@ -14,24 +13,20 @@ namespace SquashLeague.Controllers.Web
     {
         private IMailService _mailService;
         private IConfigurationRoot _config;
-        private SquashContext _context;
 
-        public AppController(IMailService mailService, IConfigurationRoot config, SquashContext context)
+        public AppController(IMailService mailService, IConfigurationRoot config)
         {
             _mailService = mailService;
             _config = config;
-            _context = context;
         }
 
         public IActionResult Index()
         {
-            var data = _context.Trips.ToList();
-            return View(data);
+            return View();
         }
 
         public IActionResult Contact()
         {
-            
             return View();
         }
 

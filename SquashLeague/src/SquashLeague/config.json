@@ -1,8 +1,5 @@
 ﻿{
   "MailSettings": {
-    "ToAddress": "tomikashi123@gmail.com"
-  },
-  "ConnectionString": {
-    "SquashContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=SquashDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
+    "ToAddress":  "tomikashi123@gmail.com"
   }
 }

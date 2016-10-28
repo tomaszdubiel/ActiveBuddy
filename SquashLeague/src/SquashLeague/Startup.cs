@@ -9,7 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SquashLeague.Services;
 using Microsoft.Extensions.Configuration;
-using SquashLeague.Models;
 
 namespace SquashLeague
 {
@@ -44,17 +43,11 @@ namespace SquashLeague
                 //Implement real service
             }
 
-            services.AddDbContext<SquashContext>();
-
-            services.AddTransient<SquashContextSeedData>();
-
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app,
-            IHostingEnvironment env,
-            SquashContextSeedData seeder)
+        public void Configure(IApplicationBuilder app)
         {
             app.UseStaticFiles();
 
@@ -67,8 +60,6 @@ namespace SquashLeague
                     );
             });
 
-            seeder.EnsureSeedData().Wait();
-           
         }
     }
 }
