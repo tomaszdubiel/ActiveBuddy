@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using SquashLeague.Models;
 using SquashLeague.Services;
 using SquashLeague.ViewModel;
@@ -14,19 +15,34 @@ namespace SquashLeague.Controllers.Web
     {
         private IMailService _mailService;
         private IConfigurationRoot _config;
-        private SquashContext _context;
+        private ISquashRepository _repo;
+        private ILogger<AppController> _logger;
 
-        public AppController(IMailService mailService, IConfigurationRoot config, SquashContext context)
+        public AppController(IMailService mailService, 
+            IConfigurationRoot config, 
+            SquashContext context, 
+            ISquashRepository repo,
+            ILogger<AppController> logger)
         {
             _mailService = mailService;
             _config = config;
-            _context = context;
+            _repo = repo;
+            _logger = logger;
         }
 
         public IActionResult Index()
         {
-            var data = _context.Trips.ToList();
-            return View(data);
+            try
+            {
+                var data = _repo.GetAllTrips();
+                return View(data);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Failed to get trips in Index page: {ex.Message}");
+                return Redirect("/error");
+            }
+            
         }
 
         public IActionResult Contact()
