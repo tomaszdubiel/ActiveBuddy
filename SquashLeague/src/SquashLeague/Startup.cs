@@ -10,6 +10,9 @@ using Microsoft.Extensions.Logging;
 using SquashLeague.Services;
 using Microsoft.Extensions.Configuration;
 using SquashLeague.Models;
+using Newtonsoft.Json.Serialization;
+using AutoMapper;
+using SquashLeague.ViewModel;
 
 namespace SquashLeague
 {
@@ -53,6 +56,7 @@ namespace SquashLeague
             services.AddLogging();
 
             services.AddMvc();
+          //Adds CamelCase to property ->  .AddJsonOptions(config => config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +65,11 @@ namespace SquashLeague
             SquashContextSeedData seeder,
             ILoggerFactory factory)
         {
+
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<TripViewModel, Trip>().ReverseMap();
+            });
 
             if(env.IsEnvironment("Development"))
             {
